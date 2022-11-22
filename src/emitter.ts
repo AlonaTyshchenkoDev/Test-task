@@ -1,4 +1,4 @@
-import { IPerson, IChangeBalance, TEventHandler, TDataHandler, THandler, EBankAction } from "./types";
+import { EBankAction, IChangeBalance, IPerson, TDataHandler, TEventHandler, THandler } from "./types";
 
 export class EventEmitter {
   events = Object.create(null);
@@ -8,7 +8,7 @@ export class EventEmitter {
       .on(EBankAction.Register, (data: IPerson) => {
         console.log(`Пользователь ${data.name} был успешно зарегистрирован`);
       })
-      .on(EBankAction.ChangeBalance, ({ name, amount }: IChangeBalance) => {
+      .on(EBankAction.ChangeBalance, ({name, amount}: IChangeBalance) => {
         console.log(`На счету ${name} — ${amount}$`);
       });
   }
